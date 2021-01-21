@@ -32,7 +32,7 @@ EMF is a JVM-only framework.
 This is a pity because EMF works extremely well (as proven by it being used as "middleware" in numerous modeling tools and environments), and is the _only_ reference implementation of EMOF that I know of.
 
 This Git repository is intended to collaborate on proposals to make EMF polyglot.
-It'd be very useful to be able to use capabilities/faciliteis from the list above in, and across various languages.
+It'd be very useful to be able to use capabilities/facilities from the list above in, and across various languages.
 This has been done to some degree for JavaScript and Python, but:
 
 * It's unclear to _which_ extent because of a lack of a specification for EMF other than its implementation and the documentation for that.
@@ -61,4 +61,6 @@ For re-implementations or "inspired by" implementations in other languages:
 Various:
 
 * [Thread on the _Strumenta Community_ that spawned this](https://d.strumenta.community/t/polyglot-modeling-metamodeling-formats-and-frameworks/1071).
+* ["EMF.cloud"](https://www.eclipse.org/emfcloud/) is the umbrella project for components and technologies making the Eclipse Modeling Framework (EMF) and its benefits available in the web and cloud.
+	It makes mention of a "EMF-JSON Jackson mapper" component.
 
