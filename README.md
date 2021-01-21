@@ -11,6 +11,7 @@ EMF's main capabilities/facilities are:
 
 1. _A runtime for the JVM to manage models in-memory_.
 	Objects in any EMF model are instantiations of `EObject`s, meta typed as instantiations of `EClass`es.
+	The runtime includes a "Command" sub system to manipulate EMF models using "deltas" (∂s).
 
 2. _A serialization to, and deserialization from [XML Metadata Interchange](https://en.wikipedia.org/wiki/XML_Metadata_Interchange) (**XMI**)_.
 
@@ -23,6 +24,8 @@ EMF's main capabilities/facilities are:
 Some features are:
 
 * A Ecore model (which specifies a meta model) is itself an EMF model, so items 3 and 4 re-use items 1 and 2.
+	![Relations between EMF and Ecore models](./images/EMF-Ecore-relation.svg)
+
 * An EMF model can be either "dynamic" (using `DynamicEObjectImpl`) or "static" (meaning that each concept/`EClass` is reified through an implementing sub type of `EObject`).
 
 
