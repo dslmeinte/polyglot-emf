@@ -36,9 +36,21 @@ This is a pity because EMF works extremely well (as proven by it being used as "
 
 This Git repository is intended to collaborate on proposals to make EMF polyglot.
 It'd be very useful to be able to use capabilities/facilities from the list above in, and across various languages.
-This has been done to some degree for JavaScript and Python, but:
 
-* It's unclear to _which_ extent because of a lack of a specification for EMF other than its implementation and the documentation for that.
+(added by Federico Tomassetti, with some modification:)
+This could open the possibility to create an ecosystem richer than the EMF ecosystem, with a variety of interoperable tools so that, based on common model and meta model formats, we could:
+
+* Have systems for storage and collaboration (Modelix)
+* Have systems for parsing, based on ANTLR (a subset of the features of Xtext, maybe something similar to textX)
+* Perhaps a way to interact with textual editors involving the Language Server Protocol
+* A way to plug-in web editors like WebEditKit and ProjectIt
+* Interaction with MPS in various forms
+* Work with multiple code generators supporting this format
+* Have the possibility of building different stages of these systems in different languages such as Kotlin, Java, Python, TypeScript, Javascript, C#
+
+Ports of (parts of) EMF to JavaScript and Python are available, but:
+
+* It's unclear to _which_ extent they are true ports because of a lack of a specification for EMF other than its implementation and the documentation for that.
 * EMF has an internal test suite, but this is coupled to Java/the JVM pretty tightly.
 
 
@@ -66,4 +78,39 @@ Various:
 * [Thread on the _Strumenta Community_ that spawned this](https://d.strumenta.community/t/polyglot-modeling-metamodeling-formats-and-frameworks/1071).
 * ["EMF.cloud"](https://www.eclipse.org/emfcloud/) is the umbrella project for components and technologies making the Eclipse Modeling Framework (EMF) and its benefits available in the web and cloud.
 	It makes mention of a "EMF-JSON Jackson mapper" component.
+* [MPS Interoperability](https://github.com/strumenta/mpsinterop) is a project by Strumenta (Federico Tomassetti) to access MPS models from outside MPS.
+	Exporting MPS models to EMF should improve interop even more.
+
+
+## Use cases
+
+Contributed by Federico Tomassetti:
+
+### Parsing and processing (short term)
+
+In the very short term, I see the need we have to combine a parser written in Kotlin with a processing stage written in Python.
+The parser is written using ANTLR and then we translate the parse tree to an AST implemented using Kotlin data classes and the [Kolasu framework](https://github.com/Strumenta/kolasu).
+To use the parser from a Python program we are just thinking of invoking the parser, make it output JSON and load such JSON from Python.
+
+Now, we can derive the meta model of our AST by examining the Kotlin data classes through reflection or parsing Kotlin code.
+Once we get this model we could serialize it in XMI or in a transposition of XMI to JSON.
+We could then load such a meta model in Python and generate classes.
+We could potentially do that using PyEcore, if I understood correctly.
+Ideally, we could also evolve PyEcore to use Python data classes, but this is not strictly necessary.
+To enable this scenario we would just need to have a mechanism that from our Kotlin data classes generate the meta model on XMI or JSON-XMI.
+
+Then we would need to translate also the actual AST instances (the model).
+At the moment we are serializing JSON and unserializing the JSON on the Python side.
+This JSON could be based on JSON-XMI instead of our own format.
+
+### Accessing Modelix from different languages (medium term)
+
+We have APIs to work with Modelix from Kotlin (and Java).
+However, it makes sense to work with models stored in Modelix from all sort of other languages, in particular from TypeScript.
+At the moment we can work with Modelix only using dynamic API.
+For example, if we have a concept Car we do not have a class Car, we just use the class Node and set properties specifying the name (e.g., “plate” or “year” or “color”).
+We do not have a class with methods such as “getPlate” or “setColor”.
+
+It could be useful to generate those classes.
+If we were exposing the meta model in some common format, like XMI, we may be able to reuse existing code generators, and then combine them with a runtime that's “Modelix-aware”.
 
