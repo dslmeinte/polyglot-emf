@@ -5,12 +5,12 @@
 
 ## Overview
 
-The Eclipse Modeling Framework (although it'd be equally valid to call it the "Ed Merks Framework") is an Eclipse project (written in Java) that provides lower-level capabilities and facilities that help with implementing modeling languages, environments, and tools.
+The [Eclipse Modeling Framework](https://www.eclipse.org/modeling/emf/) (although it'd be equally valid to call it the "Ed Merks Framework") is an Eclipse project written in Java that provides lower-level capabilities and facilities that help with implementing modeling languages, environments, and tools.
 
 EMF's main capabilities/facilities are:
 
 1. _A runtime for the JVM to manage models in-memory_.
-	Objects in any EMF model are instantiations of `EObject`s, meta typed as instantiations of `EClass`es.
+	Objects in any EMF model (or more accurately: an EMF Resource, an instance of `EResource`) are instantiations of `EObject`s, meta typed as instantiations of `EClass`es.
 	The runtime includes a "Command" sub system to manipulate EMF models using "deltas" (∂s).
 
 2. _A serialization to, and deserialization from [XML Metadata Interchange](https://en.wikipedia.org/wiki/XML_Metadata_Interchange) (**XMI**)_.
@@ -71,13 +71,24 @@ For relevant OMG standards:
 For re-implementations or "inspired by" implementations in other languages:
 
 * [ecore.js](https://emfjson.github.io/projects/ecorejs/latest/) (JavaScript).
-* [PyEcore](https://github.com/pyecore) (Python).
+* [PyEcore](https://github.com/pyecore/pyecore) (Python), and its [documentation](https://pyecore.readthedocs.io/en/latest/).
+
+Specifically about Ecore:
+
+* [JavaDoc of Ecore, with diagrams](http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/package-summary.html)
+* [Ecore as Ecore in XMI](https://github.com/eclipse/emf/blob/master/plugins/org.eclipse.emf.ecore/model/Ecore.ecore)
+* [XSD schema for Ecore XMI files](https://github.com/eclipse/emf/blob/master/plugins/org.eclipse.emf.ecore/model/Ecore.xsd)
+
+Specifically on XMI:
+
+* 	Two sources for an XML Schema for the XMI format: [OMG](https://www.omg.org/spec/XMI/20131001/XMI.xsd), [EMF Github repo](https://github.com/eclipse/emf/blob/master/plugins/org.eclipse.emf.ecore/model/XMI.xsd).
+	These don't match exactly: how do they differ effectively?
 
 Various:
 
 * [Thread on the _Strumenta Community_ that spawned this](https://d.strumenta.community/t/polyglot-modeling-metamodeling-formats-and-frameworks/1071).
 * ["EMF.cloud"](https://www.eclipse.org/emfcloud/) is the umbrella project for components and technologies making the Eclipse Modeling Framework (EMF) and its benefits available in the web and cloud.
-	It makes mention of a "EMF-JSON Jackson mapper" component.
+	It uses [`emfjson-jackson`](https://github.com/emfjson/emfjson-jackson), a Maven module that implements (de-)serialization of EMF Resources (from and) to JSON.
 * [MPS Interoperability](https://github.com/strumenta/mpsinterop) is a project by Strumenta (Federico Tomassetti) to access MPS models from outside MPS.
 	Exporting MPS models to EMF should improve interop even more.
 
@@ -113,4 +124,12 @@ We do not have a class with methods such as “getPlate” or “setColor”.
 
 It could be useful to generate those classes.
 If we were exposing the meta model in some common format, like XMI, we may be able to reuse existing code generators, and then combine them with a runtime that's “Modelix-aware”.
+
+
+## Proposals
+
+Some proposals for separate work packages:
+
+1. Describe a [JSON Schema](https://json-schema.org/specification.html) for "XMI in JSON", based on/extracted from [ecore.js](https://emfjson.github.io/projects/ecorejs/latest/), [`emfjson-jackson`](https://github.com/emfjson/emfjson-jackson) and [PyEcore](https://github.com/pyecore/pyecore).
+	* If ecore.js, `emfjson-jackson` and PyEcore differ: find a middle ground, and try to advocate/establish that through PRs?
 
