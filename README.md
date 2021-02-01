@@ -89,6 +89,7 @@ Various:
 * [Thread on the _Strumenta Community_ that spawned this](https://d.strumenta.community/t/polyglot-modeling-metamodeling-formats-and-frameworks/1071).
 * ["EMF.cloud"](https://www.eclipse.org/emfcloud/) is the umbrella project for components and technologies making the Eclipse Modeling Framework (EMF) and its benefits available in the web and cloud.
 	It uses [`emfjson-jackson`](https://github.com/emfjson/emfjson-jackson), a Maven module that implements (de-)serialization of EMF Resources (from and) to JSON.
+	The JSON format is [described here](https://emfjson.github.io/about/#json-format).
 * [MPS Interoperability](https://github.com/strumenta/mpsinterop) is a project by Strumenta (Federico Tomassetti) to access MPS models from outside MPS.
 	Exporting MPS models to EMF should improve interop even more.
 
@@ -131,5 +132,6 @@ If we were exposing the meta model in some common format, like XMI, we may be ab
 Some proposals for separate work packages:
 
 1. Describe a [JSON Schema](https://json-schema.org/specification.html) for "XMI in JSON", based on/extracted from [ecore.js](https://emfjson.github.io/projects/ecorejs/latest/), [`emfjson-jackson`](https://github.com/emfjson/emfjson-jackson) and [PyEcore](https://github.com/pyecore/pyecore).
+	This would be useful as JSON Schema is a standard that's increasingly supported by tools, and standards/frameworks/specifications such as [OpenAPI](http://spec.openapis.org/oas/v3.0.3) (formerly Swagger).
 	* If ecore.js, `emfjson-jackson` and PyEcore differ: find a middle ground, and try to advocate/establish that through PRs?
 
