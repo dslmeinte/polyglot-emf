@@ -5,7 +5,7 @@
 
 ## Overview
 
-The [Eclipse Modeling Framework](https://www.eclipse.org/modeling/emf/) (although it'd be equally valid to call it the "Ed Merks Framework") is an Eclipse project written in Java that provides lower-level capabilities and facilities that help with implementing modeling languages, environments, and tools.
+The [Eclipse Modeling Framework](https://www.eclipse.org/modeling/emf/) (although it'd be equally valid to call it the "[Ed Merks](https://ed-merks.blogspot.com/) Framework") is an Eclipse project written in Java that provides lower-level capabilities and facilities that help with implementing modeling languages, environments, and tools.
 
 EMF's main capabilities/facilities are:
 
@@ -62,6 +62,10 @@ For the EMF project itself:
 * [Entrypoint for the official high-level documentation](https://www.eclipse.org/modeling/emf/docs/).
 * [Git repository](https://github.com/eclipse/emf).
 * [Wikipedia entry](https://en.wikipedia.org/wiki/Eclipse_Modeling_Framework).
+* [*EMF: Eclipse Modeling Framework, 2nd Edition*](https://www.informit.com/store/emf-eclipse-modeling-framework-9780321331885) is the "official" book on EMF.
+	Both 1st and 2nd editions are no longer in print, but can be bought second-hand, and the 2nd edition as an eBook.
+	It's from 2008, so probably not entirely up-to-date anymore.
+	(I still have to buy and read it myself.)
 
 For relevant OMG standards:
 
@@ -72,6 +76,9 @@ For re-implementations or "inspired by" implementations in other languages:
 
 * [ecore.js](https://emfjson.github.io/projects/ecorejs/latest/) (JavaScript).
 * [PyEcore](https://github.com/pyecore/pyecore) (Python), and its [documentation](https://pyecore.readthedocs.io/en/latest/).
+* [JSOI](https://bitbucket.org/kinoritech/jsoi/src/master/) (JVM (mostly)).
+	This project is interesting because (as I understood it from Horacio) it provides an alternative serialization for EMF Resources (models) to JSON that's type-based, rather than containment-based.
+	The serialized `EObject`s are organized by type, as lists, instead of as a tree (or trees) by containment.
 
 Specifically about Ecore:
 
