@@ -1,0 +1,18 @@
+{
+  "name": "polyglot-emf-node",
+  "version": "0.0.1",
+  "description": "The Node.js part of https://github.com/dslmeinte/polyglot-emf/",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "./validate.sh"
+  },
+  "author": "Meinte Boersma",
+  "license": "MIT",
+  "devDependencies": {
+    "ajv": "^7.0.4",
+    "ajv-cli": "^4.0.1"
+  }
+}

@@ -16,7 +16,7 @@ EMF's main capabilities/facilities are:
 2. _A serialization to, and deserialization from [XML Metadata Interchange](https://en.wikipedia.org/wiki/XML_Metadata_Interchange) (**XMI**)_.
 
 3. _A meta meta model, called **Ecore**_.
-	Ecore is described by Ed Merks as "[...] the de facto reference implementation of [OMG](https://en.wikipedia.org/wiki/Object_Management_Group)'s [https://en.wikipedia.org/wiki/Meta-Object_Facility](EMOF) (Essential Meta-Object Facility)".
+	Ecore is described by Ed Merks as "[...] the de facto reference implementation of [OMG](https://en.wikipedia.org/wiki/Object_Management_Group)'s [EMOF](https://en.wikipedia.org/wiki/Meta-Object_Facility) (Essential Meta-Object Facility)".
 	Basically, Ecore is precisely enough to meta model "anything".
 
 4. _A generator from Ecore to Java classes sub typing `EObject`_.
@@ -72,13 +72,16 @@ For relevant OMG standards:
 * [EMOF = Essential Meta-Object Facility - see chapter 12](https://www.omg.org/spec/MOF/2.4.1/PDF).
 * [XMI = XML Metadata Interchange](https://www.omg.org/spec/XMI).
 
-For re-implementations or "inspired by" implementations in other languages:
+For re-implementations or "inspired by" implementations (some in other languages):
 
 * [ecore.js](https://emfjson.github.io/projects/ecorejs/latest/) (JavaScript).
 * [PyEcore](https://github.com/pyecore/pyecore) (Python), and its [documentation](https://pyecore.readthedocs.io/en/latest/).
 * [JSOI](https://bitbucket.org/kinoritech/jsoi/src/master/) (JVM (mostly)).
 	This project is interesting because (as I understood it from Horacio) it provides an alternative serialization for EMF Resources (models) to JSON that's type-based, rather than containment-based.
 	The serialized `EObject`s are organized by type, as lists, instead of as a tree (or trees) by containment.
+* [`emfjson-jackson`](https://github.com/emfjson/emfjson-jackson), a Maven module that implements (de-)serialization of EMF Resources (from and) to JSON.
+	The JSON format is [described here](https://emfjson.github.io/about/#json-format).
+
 
 Specifically about Ecore:
 
@@ -91,12 +94,17 @@ Specifically on XMI:
 * 	Two sources for an XML Schema for the XMI format: [OMG](https://www.omg.org/spec/XMI/20131001/XMI.xsd), [EMF Github repo](https://github.com/eclipse/emf/blob/master/plugins/org.eclipse.emf.ecore/model/XMI.xsd).
 	These don't match exactly: how do they differ effectively?
 
+Specifically about JSON Schema:
+
+* specification: [JSON Schema](https://json-schema.org/specification.html)
+* article: [Discovering Implicit Schemas in JSON Data, by Javier Cánovas, and Jordi Cabot](https://hal.inria.fr/hal-00818945/document)
+
+
 Various:
 
 * [Thread on the _Strumenta Community_ that spawned this](https://d.strumenta.community/t/polyglot-modeling-metamodeling-formats-and-frameworks/1071).
 * ["EMF.cloud"](https://www.eclipse.org/emfcloud/) is the umbrella project for components and technologies making the Eclipse Modeling Framework (EMF) and its benefits available in the web and cloud.
-	It uses [`emfjson-jackson`](https://github.com/emfjson/emfjson-jackson), a Maven module that implements (de-)serialization of EMF Resources (from and) to JSON.
-	The JSON format is [described here](https://emfjson.github.io/about/#json-format).
+	It uses [`emfjson-jackson`](https://github.com/emfjson/emfjson-jackson).
 * [MPS Interoperability](https://github.com/strumenta/mpsinterop) is a project by Strumenta (Federico Tomassetti) to access MPS models from outside MPS.
 	Exporting MPS models to EMF should improve interop even more.
 
@@ -141,4 +149,14 @@ Some proposals for separate work packages:
 1. Describe a [JSON Schema](https://json-schema.org/specification.html) for "XMI in JSON", based on/extracted from [ecore.js](https://emfjson.github.io/projects/ecorejs/latest/), [`emfjson-jackson`](https://github.com/emfjson/emfjson-jackson) and [PyEcore](https://github.com/pyecore/pyecore).
 	This would be useful as JSON Schema is a standard that's increasingly supported by tools, and standards/frameworks/specifications such as [OpenAPI](http://spec.openapis.org/oas/v3.0.3) (formerly Swagger).
 	* If ecore.js, `emfjson-jackson` and PyEcore differ: find a middle ground, and try to advocate/establish that through PRs?
+
+
+## Repo structure
+
+* [`mps/`](./mps/) holds an JetBrains' MPS project.
+  	This project holds a model with some JSON Schemas which are authored using a JSON Schema language implementation that can be [here](https://github.com/dslmeinte/mps-open-source/tree/master/mps-open-source).
+  	Clone [this repository](https://github.com/dslmeinte/mps-open-source), open MPS on `mps-open-source/mps-open-source`, and build the entire project.
+  	After that, you can open [`mps/`](./mps/) as a project in a new MPS window, and open roots in the `EMF` model in the `schemas` module.
+  	Building that module results in JSON schemas in [`mps/solutions/schemas/source_gen/EMF/`](./mps/solutions/schemas/source_gen/EMF/).
+* [`ideas.md`](./ideas.md) holds a collection of ideas/TODOs.
 

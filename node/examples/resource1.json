@@ -1,0 +1,24 @@
+{
+  "eClass": "http://www.eclipse.org/emf/2002/Ecore#//EPackage",
+  "name": "myModel",
+  "nsURI": "http://example.org/myModel",
+  "eClassifiers": [
+    {
+      "eClass": "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name": "Foo",
+      "eStructuralFeatures": [
+        {
+          "eClass": "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+          "name": "bar",
+          "eType": "http://www.eclipse.org/emf/2002/Ecore#//EString"
+        },
+        {
+          "eClass": "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+          "name": "foos",
+          "upperBound": -1,
+          "eType": "http://www.eclipse.org/emf/2002/Ecore#//Foo"
+        }
+      ]
+    }
+  ]
+}

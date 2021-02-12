@@ -1,0 +1,101 @@
+{
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "$ref" : "#/definitions/EPackage",
+  "definitions" : {
+    "EPackage" : {
+      "type" : "object",
+      "properties" : {
+        "eClass" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "nsURI" : {
+          "type" : "string"
+        },
+        "eClassifiers" : {
+          "type" : "array",
+          "minItems" : 0,
+          "items" : {
+            "$ref" : "#/definitions/EClassifier"
+          }
+        }
+      },
+      "required" : [ "eClass", "name", "nsURI" ],
+      "additionalProperties" : false
+    },
+    "EClass" : {
+      "type" : "object",
+      "properties" : {
+        "eClass" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "eStructuralFeatures" : {
+          "type" : "array",
+          "minItems" : 0,
+          "items" : {
+            "$ref" : "#/definitions/EStructuralFeature"
+          }
+        }
+      },
+      "required" : [ "eClass", "name" ],
+      "additionalProperties" : false
+    },
+    "EAttribute" : {
+      "type" : "object",
+      "properties" : {
+        "eClass" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "eType" : {
+          "type" : "string"
+        },
+        "upperBound" : {
+          "type" : "integer",
+          "minimum" : -1,
+          "maximum" : 0
+        }
+      },
+      "required" : [ "eClass", "name", "eType", "upperBound" ]
+    },
+    "EReference" : {
+      "type" : "object",
+      "properties" : {
+        "eClass" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "eType" : {
+          "type" : "string"
+        },
+        "upperBound" : {
+          "type" : "integer",
+          "minimum" : -1,
+          "maximum" : 0
+        }
+      },
+      "required" : [ "eClass", "name", "eType" ]
+    },
+    "EStructuralFeature" : {
+      "anyOf" : [ {
+        "$ref" : "#/definitions/EAttribute"
+      }, {
+        "$ref" : "#/definitions/EReference"
+      } ]
+    },
+    "EClassifier" : {
+      "oneOf" : [ {
+        "$ref" : "#/definitions/EClass"
+      } ]
+    }
+  }
+}
