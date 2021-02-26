@@ -82,16 +82,18 @@ For re-implementations or "inspired by" implementations (some in other languages
 * [JSOI](https://bitbucket.org/kinoritech/jsoi/src/main/) (JVM (mostly)).
 	This project is interesting because (as I understood it from Horacio) it provides an alternative serialization for EMF Resources (models) to JSON that's type-based, rather than containment-based.
 	The serialized `EObject`s are organized by type, as lists, instead of as a tree (or trees) by containment.
+	Also see [this IEEE article by Horacio](https://ieeexplore.ieee.org/abstract/document/8904481) about it.
 * [`emfjson-jackson`](https://github.com/emfjson/emfjson-jackson), a Maven module that implements (de-)serialization of EMF Resources (from and) to JSON.
 	The JSON format is [described here](https://emfjson.github.io/about/#json-format).
-
+* [CrossEcore](https://github.com/crossecore) - for Java, Typescript, C# (.Net) and Swift
+* For C++:
+	- [MDE4CPP](https://github.com/MDE4CPP/MDE4CPP)	- [SOFT](https://github.com/masagroup/soft) (also Go)	- [miniEMF](https://github.com/mbruel/miniEMF)	- [EMF4CPP](https://github.com/catedrasaes-umu/emf4cpp) (not updated in 2 years)	- [Ecore4CPP](https://github.com/pritzkaual/ecore4CPP) (not updated since 2017)
 
 Specifically about Ecore:
 
 * [JavaDoc of Ecore, with diagrams](http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/package-summary.html)
 * [Ecore as Ecore in XMI](https://github.com/eclipse/emf/blob/master/plugins/org.eclipse.emf.ecore/model/Ecore.ecore)
 * [XSD schema for Ecore XMI files](https://github.com/eclipse/emf/blob/master/plugins/org.eclipse.emf.ecore/model/Ecore.xsd)
-
 
 Specifically on XMI:
 
@@ -103,6 +105,22 @@ Specifically about JSON Schema:
 * specification: [JSON Schema](https://json-schema.org/specification.html)
 * article: [Discovering Implicit Schemas in JSON Data, by Javier Cánovas, and Jordi Cabot](https://hal.inria.fr/hal-00818945/document)
 
+Software and frameworks _using_ EMF:
+
+* [Acceleo](https://www.eclipse.org/acceleo/)
+* [ATL](https://www.eclipse.org/atl/)
+* [CDO](https://www.eclipse.org/cdo/) = Connected Data Objects
+* [Eclipse](https://www.eclipse.org/) (dûh...)
+* [EMF.cloud](https://www.eclipse.org/emfcloud/)
+* [Epsilon](https://www.eclipse.org/epsilon/)
+* [GMF](https://www.eclipse.org/gmf-tooling/)
+* [Graphiti](https://www.eclipse.org/graphiti/)
+* [Obeo](https://www.obeosoft.com/en/)
+* [Rational Software Modeler](https://en.wikipedia.org/wiki/Rational_Software_Modeler) (from IBM - was "Rational Rose" before) [download page](https://www.ibm.com/support/pages/rational-software-modeler-version-70)
+* [Sirius](https://www.eclipse.org/sirius/) ([Web](https://www.eclipse.org/sirius/sirius-web.html))
+* [Sprotty](https://github.com/eclipse/sprotty)
+* [Xtext](https://www.eclipse.org/Xtext/)
+* [Yakindu](https://www.itemis.com/en/yakindu/state-machine/) (from itemis)
 
 Various:
 
