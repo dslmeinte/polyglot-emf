@@ -7,6 +7,8 @@
 
 The [Eclipse Modeling Framework](https://www.eclipse.org/modeling/emf/) (although it'd be equally valid to call it the "[Ed Merks](https://ed-merks.blogspot.com/) Framework") is an Eclipse project written in Java that provides lower-level capabilities and facilities that help with implementing modeling languages, environments, and tools.
 
+![An annotated diagram of EMF's main capabilities/facilities](images/mindmap-like.svg)
+
 EMF's main capabilities/facilities are:
 
 1. _A runtime for the JVM to manage models in-memory_.
@@ -27,6 +29,7 @@ Some features are:
 	![Relations between EMF and Ecore models](./images/EMF-Ecore-relation.svg)
 
 * An EMF model can be either "dynamic" (using `DynamicEObjectImpl`) or "static" (meaning that each concept/`EClass` is reified through an implementing sub type of `EObject`).
+	In Java, the idioms for using EMF dynamically versus using EMF statically differ quite a bit: the dynamic idiom hinges completely on the reflective part of the API of the EMF runtime.
 
 
 ## Motivation
@@ -76,7 +79,7 @@ For re-implementations or "inspired by" implementations (some in other languages
 
 * [ecore.js](https://emfjson.github.io/projects/ecorejs/latest/) (JavaScript).
 * [PyEcore](https://github.com/pyecore/pyecore) (Python), and its [documentation](https://pyecore.readthedocs.io/en/latest/).
-* [JSOI](https://bitbucket.org/kinoritech/jsoi/src/master/) (JVM (mostly)).
+* [JSOI](https://bitbucket.org/kinoritech/jsoi/src/main/) (JVM (mostly)).
 	This project is interesting because (as I understood it from Horacio) it provides an alternative serialization for EMF Resources (models) to JSON that's type-based, rather than containment-based.
 	The serialized `EObject`s are organized by type, as lists, instead of as a tree (or trees) by containment.
 * [`emfjson-jackson`](https://github.com/emfjson/emfjson-jackson), a Maven module that implements (de-)serialization of EMF Resources (from and) to JSON.
@@ -88,6 +91,7 @@ Specifically about Ecore:
 * [JavaDoc of Ecore, with diagrams](http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/package-summary.html)
 * [Ecore as Ecore in XMI](https://github.com/eclipse/emf/blob/master/plugins/org.eclipse.emf.ecore/model/Ecore.ecore)
 * [XSD schema for Ecore XMI files](https://github.com/eclipse/emf/blob/master/plugins/org.eclipse.emf.ecore/model/Ecore.xsd)
+
 
 Specifically on XMI:
 

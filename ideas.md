@@ -12,7 +12,7 @@
 * A mapping that maps an Ecore to _precise_ XML and JSON Schemas: _descent_.
 * A (standalone) Web editor for Ecore.
 * &hellip; Implementations of Ecore (and XMI, as generation target) in JetBrains' MPS.
-* Use Xcore to conveniently author Ecore models outside of Eclipse.
+* Use [Xcore](https://wiki.eclipse.org/Xcore) to conveniently author Ecore models outside of Eclipse.
 
 ## Other
 
